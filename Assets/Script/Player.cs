@@ -27,9 +27,9 @@ public class Player : MonoBehaviour
 
         // Flip the character if moving left or right
         if (moveInput > 0)
-            transform.localScale = new Vector3(1, 1, 1);
-        else if (moveInput < 0)
             transform.localScale = new Vector3(-1, 1, 1);
+        else if (moveInput < 0)
+            transform.localScale = new Vector3(1, 1, 1);
     }
 
     void Jump()

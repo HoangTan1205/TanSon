@@ -7,7 +7,6 @@ public class Baylv1 : MonoBehaviour
     private Rigidbody2D rb;
     public bool cham = false;
     public float tocDo = 3f;
-    float moveInput = 1f;
     float moveSpeed = 50f;
 
     void Start()
