@@ -6,7 +6,7 @@ public class Baylv1 : MonoBehaviour
 {
     [SerializeField] Rigidbody2D rb;
     [SerializeField] bool cham = false;
-    [SerializeField] float moveSpeed = 50f;
+    [SerializeField] float moveSpeed = 1300f;
     void Start()
     {
         
@@ -20,7 +20,7 @@ public class Baylv1 : MonoBehaviour
 
             rb.velocity = new Vector2( moveSpeed * Time.deltaTime, rb.velocity.y);
 
-            Destroy(gameObject, 2f);
+            Destroy(gameObject, 1f);
 
         }
     }

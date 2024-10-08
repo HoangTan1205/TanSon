@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     [SerializeField] Rigidbody2D rb;
     [SerializeField] bool isGrounded;
 
-    public Animator ani;
+    [SerializeField] Animator ani;
 
     void Start()
     {
