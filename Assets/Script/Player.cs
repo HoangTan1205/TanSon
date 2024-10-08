@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float moveSpeed = 10f; // Tốc độ di chuyển
-    public float jumpForce = 10f; // Lực nhảy
-    private Rigidbody2D rb;
-    private bool isGrounded;
+    [SerializeField] float moveSpeed = 10f; 
+    [SerializeField] float jumpForce = 10f; 
+    [SerializeField] Rigidbody2D rb;
+    [SerializeField] bool isGrounded;
+
+    public Animator ani;
 
     void Start()
     {
@@ -18,6 +21,7 @@ public class Player : MonoBehaviour
     {
         Move();
         Jump();
+
     }
 
     void Move()
@@ -25,11 +29,27 @@ public class Player : MonoBehaviour
         float moveInput = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
 
-        // Flip the character if moving left or right
+        if (moveInput != 0)
+        {
+            ani.SetBool("Run", true);
+        }
+        else
+        {
+            ani.SetBool("Run", false);
+        }
+
+
         if (moveInput > 0)
+        {
+
             transform.localScale = new Vector3(1, 1, 1);
+        }          
         else if (moveInput < 0)
+        {
             transform.localScale = new Vector3(-1, 1, 1);
+        }
+
+
     }
 
     void Jump()
@@ -42,16 +62,22 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // Kiểm tra xem nhân vật có tiếp xúc với mặt đất hay không
+        
         if (collision.gameObject.CompareTag("Nen"))
         {
             isGrounded = true;
+        }
+        if (collision.gameObject.CompareTag("VucMap"))
+        {
+            ani.SetTrigger("Die");
+            Destroy(gameObject, 0.5f);
+            
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        // Khi rời mặt đất
+        
         if (collision.gameObject.CompareTag("Nen"))
         {
             isGrounded = false;

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Nen
   - GioiHan
+  - Bay
+  - VucMap
   layers:
   - Default
   - TransparentFX
