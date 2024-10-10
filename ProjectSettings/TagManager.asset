@@ -3,16 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Nen
-  - GioiHan
-  - Bay
-  - VucMap
-<<<<<<< HEAD
-  - Door
-=======
-  - spike
->>>>>>> 8b94e3dd32cea24a3092d3c3d434062a99e0af1d
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -49,13 +40,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: New Layer 1
-    uniqueID: 1285766749
-    locked: 0
-  - name: New Layer 2
-    uniqueID: 4237548999
-    locked: 0
-  - name: New Layer 3
-    uniqueID: 4276430523
     locked: 0
