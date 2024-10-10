@@ -9,25 +9,32 @@ public class Player : MonoBehaviour
     [SerializeField] float jumpForce = 10f; 
     [SerializeField] Rigidbody2D rb;
     [SerializeField] bool isGrounded;
+    [SerializeField] Vector2 movement;
 
     [SerializeField] Animator ani;
 
     void Start()
     {
+        
         rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
-        Move();
+       
         Jump();
 
+    }
+    private void FixedUpdate()
+    {
+        Move();
     }
 
     void Move()
     {
-        float moveInput = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
+        float moveInput = Input.GetAxisRaw("Horizontal");
+        movement = new Vector2(moveInput, 0);
+        rb.velocity = new Vector2(movement.x * moveSpeed, rb.velocity.y);
 
         if (moveInput != 0)
         {
@@ -63,12 +70,14 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         
+
         if (collision.gameObject.CompareTag("Nen"))
         {
             isGrounded = true;
         }
         if (collision.gameObject.CompareTag("VucMap"))
         {
+            moveSpeed = 0f;
             ani.SetTrigger("Die");
             Destroy(gameObject, 0.5f);
             
