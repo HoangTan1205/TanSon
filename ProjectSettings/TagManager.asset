@@ -8,6 +8,7 @@ TagManager:
   - GioiHan
   - Bay
   - VucMap
+  - spike
   layers:
   - Default
   - TransparentFX
