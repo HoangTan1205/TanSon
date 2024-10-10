@@ -8,7 +8,11 @@ TagManager:
   - GioiHan
   - Bay
   - VucMap
+<<<<<<< HEAD
   - Door
+=======
+  - spike
+>>>>>>> 8b94e3dd32cea24a3092d3c3d434062a99e0af1d
   layers:
   - Default
   - TransparentFX
