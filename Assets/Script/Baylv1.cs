@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Baylv1 : MonoBehaviour
 {
-    [SerializeField] Rigidbody2D rb;
-    [SerializeField] bool cham = false;
-    [SerializeField] float moveSpeed = 1300f;
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private bool cham = false;
+    [SerializeField] private float moveSpeed = 1300f;
     void Start()
     {
         

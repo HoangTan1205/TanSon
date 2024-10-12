@@ -163,13 +163,13 @@ TextureImporter:
       name: Button_3
       rect:
         serializedVersion: 2
-        x: 296
-        y: 5930
-        width: 408
-        height: 181
+        x: 303
+        y: 5946
+        width: 397
+        height: 160
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 22, y: 22, z: 23, w: 19}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -197,27 +197,6 @@ TextureImporter:
       bones: []
       spriteID: 912dd4d05e37b354eb03f3510e8d9181
       internalID: 1004113510
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Button_5
-      rect:
-        serializedVersion: 2
-        x: 1187
-        y: 5930
-        width: 409
-        height: 181
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7de49abef44e4c741857210d8a3f8c04
-      internalID: 107375993
       vertices: []
       indices: 
       edges: []
@@ -2952,6 +2931,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Button_136
+      rect:
+        serializedVersion: 2
+        x: 1194
+        y: 5951
+        width: 390
+        height: 154
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 20, y: 19, z: 19, w: 19}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb5e2b693bcd6a34aae6670008c11218
+      internalID: -762073787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -3005,6 +3005,7 @@ TextureImporter:
       Button_133: 1472508542
       Button_134: 874973338
       Button_135: 1158229076
+      Button_136: -762073787
       Button_14: -1682804995
       Button_15: -187627434
       Button_16: -1362048307

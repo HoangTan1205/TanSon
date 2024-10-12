@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] float moveSpeed = 10f; 
-    [SerializeField] float jumpForce = 10f; 
-    [SerializeField] Rigidbody2D rb;
-    [SerializeField] bool isGrounded;
-    [SerializeField] Vector2 movement;
+    [SerializeField] private float moveSpeed = 10f; 
+    [SerializeField] private float jumpForce = 10f; 
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private bool isGrounded;
+    [SerializeField] private Vector2 movement;
 
     [SerializeField] Animator ani;
 

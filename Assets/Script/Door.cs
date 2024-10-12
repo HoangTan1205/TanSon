@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour
 {
-    [SerializeField] Animator ani;
-    [SerializeField] bool win;
+    [SerializeField] private Animator ani;
+    [SerializeField] private bool win;
     void Start()
     {
         
