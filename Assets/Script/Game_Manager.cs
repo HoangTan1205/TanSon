@@ -1,10 +1,11 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static Scr_TableOject;
-using System.Linq;
+
+using UnityEngine.UI;
 
 public class Game_Manager : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class Game_Manager : MonoBehaviour
     {
         file = "Data_User";
         LoadTextLinh(file);
-        Debug.Log(ThemID());
+        
     }
     public void LoadTextLinh(string path)
     {
@@ -40,11 +41,11 @@ public class Game_Manager : MonoBehaviour
         }
     }
 
-    public int ThemID()
-    {
-        int tim = listTT.Max(tt => tt.Id);
-        return tim+1;
-    }
+    // public int ThemID()
+    // {
+    //     int tim = listTT.Max(tt => tt.Id);
+    //     return tim + 1;
+    // }
 
     public void AppendData( string playerName, string pass)
     {
@@ -54,6 +55,7 @@ public class Game_Manager : MonoBehaviour
         File.AppendAllText(file, newLine + "\n");
 
     }
+    
 
 
 
