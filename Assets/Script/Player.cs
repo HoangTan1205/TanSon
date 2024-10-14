@@ -10,9 +10,14 @@ public class Player : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private bool isGrounded;
     [SerializeField] private Vector2 movement;
-
     [SerializeField] Animator ani;
 
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     void Start()
     {
         
@@ -63,6 +68,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
+            audioManager.PlaySFX(audioManager.jump);
             rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
         }
     }
@@ -77,6 +83,7 @@ public class Player : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("VucMap"))
         {
+            audioManager.PlaySFX(audioManager.gameOver);
             moveSpeed = 0f;
             ani.SetTrigger("Die");
             Destroy(gameObject, 0.5f);
