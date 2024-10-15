@@ -5,65 +5,119 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using TMPro;
+using System.Data;
+using UnityEditor;
+using static Scr_TableOject;
 public class ButtonMenu : MonoBehaviour
 {
     [SerializeField] private string file = "Data_User";
-    public InputField usernameInput;
-    public InputField passwordInput;
-    public Text messageText;
+    [SerializeField] private TMP_InputField usernameField;
+    [SerializeField] private TMP_InputField passwordField;
+    [SerializeField] private TextMeshProUGUI messageText;
     [SerializeField] private Scr_TableOject data;
+    [SerializeField] private Data_User_Login Data_User_Login;
+
+    [SerializeField] private TextMeshProUGUI hienTTUserName;
+    [SerializeField] private TextMeshProUGUI hienTTDiemCao;
+
+    [SerializeField] private GameObject Menu;
+    [SerializeField] private GameObject Login;
+
+    public void DangNhap()
+    {
+        string username = usernameField.text;
+        string password = passwordField.text;
+        if (CheckInput(username, password))
+        {
+            messageText.text = "Đăng nhập thành công! Đang tải dữ liệu...";
+
+        }
+        else
+        {
+            messageText.text = "Sai tên đăng nhập hoặc mật khẩu!";
+        }
+    }
+
+    private bool CheckInput(string username, string password)
+    {
+        var user = data.List_User.FirstOrDefault(u => u.UserName == username && u.Pass == password);
+        if (user != null)
+        {
+            Data_User_Login.idUser = user.Id;
+            Data_User_Login.userName = user.UserName;
+            Data_User_Login.passwordUser = user.Pass;
+            Data_User_Login.levelUser = user.Level;
+            Data_User_Login.diemCao = user.DiemCao;
+            Data_User_Login.sound = user.AmThanh;
+
+            hienTTUserName.text = "User: " + user.UserName;
+            hienTTDiemCao.text = "High Score: " + user.DiemCao.ToString();
+            Invoke("SetActiveMenu", 1.5f);
+            Invoke("ClearInput", 2f);
+
+
+            return true;
+        }
+        return false;
+    }
     public int ThemID()
     {
         int tim = data.List_User.Max(tt => tt.Id);
         return tim + 1;
     }
+
     public void DangKy()
     {
-        string username = usernameInput.text;
-        string password = passwordInput.text;
-
-        if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+        if (string.IsNullOrEmpty(usernameField.text))
         {
-            messageText.text = "Username and password cannot be empty!";
+            messageText.text = "Tên Đăng Nhập không được để trống";
+            return;
+        }
+        else if (string.IsNullOrEmpty(passwordField.text))
+        {
+            messageText.text = "Mật khẩu không được để trống";
             return;
         }
 
-        using (StreamWriter writer = new StreamWriter(file, true))
+        // Kiểm tra xem tài khoản đã tồn tại chưa
+        if (KiemTraUserName(usernameField.text))
         {
-            writer.WriteLine($"{ThemID()}'\t'{username}'\t'{password}'\t'{1}'\t'{1}'\t'{0}");
+            messageText.text = "Tên Đăng Nhập đã tồn tại";
         }
-
-        messageText.text = "Registration successful!";
+        else
+        {
+            TableObject list = new TableObject(ThemID(), usernameField.text, passwordField.text, 1, 1, 0);
+            data.List_User.Add(list);
+            messageText.text = "Đăng Ký thành công! Đang tải dữ liệu...";
+        }
     }
 
-    public void DangNhap()
+    private bool KiemTraUserName(string usernameToCheck)
     {
-        string username = usernameInput.text;
-        string password = passwordInput.text;
-
-        if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+        // Kiểm tra xem username đã tồn tại chưa
+        foreach (var account in data.List_User)
         {
-            messageText.text = "Username and password cannot be empty!";
-            return;
-        }
+            string accountData = account.UserName;
 
-        // Đọc file và kiểm tra thông tin đăng nhập
-        bool loginSuccessful = false;
-        using (StreamReader reader = new StreamReader(file))
-        {
-            string line;
-            while ((line = reader.ReadLine()) != null)
+            if (accountData == usernameToCheck)
             {
-                string[] credentials = line.Split(',');
-
-                if (credentials.Length == 2 && credentials[0] == username && credentials[1] == password)
-                {
-                    loginSuccessful = true;
-                    break;
-                }
+                return true;
             }
         }
+        return false;
+    }
+    private void SetActiveMenu()
+    {
+        Login.gameObject.SetActive(false);
+        Menu.gameObject.SetActive(true);
+    }
 
-        messageText.text = loginSuccessful ? "Login successful!" : "Invalid username or password.";
+    private void ClearInput()
+    {
+        usernameField.text = "";
+        passwordField.text = "";
+        messageText.text = "";
+
     }
 }

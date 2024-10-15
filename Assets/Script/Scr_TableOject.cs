@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "DataUser", menuName = ("ThongTin"), order = 1)]
+[CreateAssetMenu(fileName = "DataUser", menuName = ("Infor/ThongTin"), order = 1)]
 public class Scr_TableOject : ScriptableObject
 {
     public List<TableObject> List_User = new List<TableObject>();
