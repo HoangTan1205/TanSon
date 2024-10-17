@@ -55,8 +55,6 @@ public class ButtonMenu : MonoBehaviour
             hienTTDiemCao.text = "High Score: " + user.DiemCao.ToString();
             Invoke("SetActiveMenu", 1.5f);
             Invoke("ClearInput", 2f);
-
-
             return true;
         }
         return false;
@@ -89,7 +87,19 @@ public class ButtonMenu : MonoBehaviour
         {
             TableObject list = new TableObject(ThemID(), usernameField.text, passwordField.text, 1, 1, 0);
             data.List_User.Add(list);
-            messageText.text = "Đăng Ký thành công! Đang tải dữ liệu...";
+            if (CheckInput(usernameField.text, passwordField.text))
+            {
+                messageText.text = "Đăng Ký thành công! Đang tải dữ liệu...";
+
+            }
+            else
+            {
+                messageText.text = "Đăng ký thất bại...";
+            }
+            
+
+
+            
         }
     }
 
