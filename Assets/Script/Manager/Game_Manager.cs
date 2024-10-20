@@ -16,28 +16,39 @@ public class Game_Manager : MonoBehaviour
 
     [SerializeField] private Data_User_Login Data_User_Login;
     public AudioSource backgroundMusic;
+    public static Game_Manager instance;
     private string filePath;
     private void Awake()
     {
         file = "Data_User";
         LoadTextLinh(file);
-    }
-    private void Start()
-    {     
-        ReadSoundSettings();
-    }
-    void ReadSoundSettings()
-    {
 
-        if (Data_User_Login.sound == 1)
+        if (instance == null)
         {
-            backgroundMusic.Play();
+            instance = this;
+            DontDestroyOnLoad(gameObject);  // Giữ đối tượng không bị hủy khi chuyển scene
         }
         else
         {
-            backgroundMusic.Stop();
+            Destroy(gameObject);  // Hủy đối tượng mới nếu đã tồn tại một instance
         }
     }
+    private void Start()
+    {     
+        //ReadSoundSettings();
+    }
+    // void ReadSoundSettings()
+    // {
+    // 
+    //     if (Data_User_Login.sound == 1)
+    //     {
+    //         backgroundMusic.Play();
+    //     }
+    //     else
+    //     {
+    //         backgroundMusic.Stop();
+    //     }
+    // }
 
 
     public void LoadTextLinh(string path)

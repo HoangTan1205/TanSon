@@ -27,7 +27,6 @@ public class PauseGame : MonoBehaviour
         float fadeSpeed = 1f / fadeDuration;
         float progress = 0f;
 
-        // Tăng dần alpha của hình ảnh để làm tối màn hình
         while (progress < 1f)
         {
             progress += Time.deltaTime * fadeSpeed;
@@ -41,7 +40,6 @@ public class PauseGame : MonoBehaviour
         float fadeSpeed = 1f / fadeDuration;
         float progress = 1f;
 
-        // Giảm dần alpha của hình ảnh để sáng dần màn hình
         while (progress > 0f)
         {
             progress -= Time.deltaTime * fadeSpeed;
@@ -49,7 +47,6 @@ public class PauseGame : MonoBehaviour
             yield return null;
         }
 
-        // Khi hiệu ứng fade-in hoàn tất, tắt UI Image
         fadeImage.gameObject.SetActive(false);
     }
     public void TamDung()

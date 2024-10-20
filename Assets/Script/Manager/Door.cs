@@ -3,15 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using static Data_User_Login;
 public class Door : MonoBehaviour
 {
+    [SerializeField] private Data_User_Login data_User_Login;
     [SerializeField] private Animator ani;
     [SerializeField] private bool win;
     [SerializeField] private GameObject panelWin;
+    [SerializeField] private int level;
     void Start()
     {
-        
+        level = SceneManager.GetActiveScene().buildIndex;
     }
 
 
@@ -37,6 +39,7 @@ public class Door : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            Tanglevel();
             win = true;
             Destroy(collision.gameObject, 0.7f);
             StartCoroutine(HienPanel());
@@ -54,6 +57,15 @@ public class Door : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         panelWin.SetActive(true);
+    }
+    private void Tanglevel()
+    {
+        if(level == data_User_Login.levelUser)
+        {
+            data_User_Login.levelUser++;
+        }
+        else return;
+                 
     }
 
 }

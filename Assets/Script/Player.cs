@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        //audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
     void Start()
     {
@@ -34,7 +34,10 @@ public class Player : MonoBehaviour
     {
         Move();
     }
-
+    public void JumdSound()
+    {
+        audioManager.PlaySFX(audioManager.jump);
+    }
     void Move()
     {
         float moveInput = Input.GetAxisRaw("Horizontal");
@@ -68,7 +71,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            //audioManager.PlaySFX(audioManager.jump);
+            JumdSound();
             rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
         }
     }

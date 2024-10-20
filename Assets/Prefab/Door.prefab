@@ -165,5 +165,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ac5c1d4d502960449ef046bab6e52d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data_User_Login: {fileID: 11400000, guid: eea137499ef83964cb5b06d88d3eb6a8, type: 2}
   ani: {fileID: 1635761904511767733}
   win: 0
+  panelWin: {fileID: 0}
+  level: 0

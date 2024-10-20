@@ -6,12 +6,13 @@ using static Data_User_Login;
 public class SoundSetting : MonoBehaviour
 {
     public Toggle soundToggle;
-    public AudioSource backgroundMusic;
-    public Data_User_Login Data_User_Login;
+    public AudioManager audioMusic;
+    public Data_User_Login data_User_Login;
     public int soundContent;
     void Start()
     {
-        soundContent = Data_User_Login.sound;
+        audioMusic = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        soundContent = data_User_Login.sound;
         LoadToggleState();
 
         soundToggle.onValueChanged.AddListener(delegate { ToggleSound(soundToggle); });
@@ -34,13 +35,16 @@ public class SoundSetting : MonoBehaviour
     {
         if (toggle.isOn)
         {
-            backgroundMusic.Play();
+            audioMusic.PlayMusic(audioMusic.backGround);
+            audioMusic.musicSource.Play();
+            data_User_Login.sound = 1;
 
         }
         else
         {
-            backgroundMusic.Stop();
-
+            audioMusic.PlayMusic(audioMusic.backGround);
+            audioMusic.musicSource.Stop();
+            data_User_Login.sound = 0;
         }
     }
 }

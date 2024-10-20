@@ -194,8 +194,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  jumpForce: 15
+  jumpForce: 25
   rb: {fileID: 2564056421859069963}
   isGrounded: 0
   movement: {x: 0, y: 0}
   ani: {fileID: 827959822517435223}
+  panel: {fileID: 0}

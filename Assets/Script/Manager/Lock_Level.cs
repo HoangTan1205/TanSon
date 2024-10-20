@@ -8,13 +8,16 @@ public class Lock_Level : MonoBehaviour
     public Data_User_Login dtLogin;
     public int checkd;
     public Button[] levelButtons;
-
+    public AudioManager audioManager;
     private void Awake()
     {
         checkd = dtLogin.levelUser;
         UnlockLevels();
     }
-
+    private void Start()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     public void OnButtonCheck()
     {
 
@@ -46,5 +49,6 @@ public class Lock_Level : MonoBehaviour
             int levelIndex = i; // Lưu chỉ số level để sử dụng trong sự kiện
             levelButtons[i].onClick.AddListener(() => SceneManager.LoadScene(levelIndex + 1));
         }
+        audioManager.PlaySFX(audioManager.click);
     }
 }
