@@ -1,7 +1,8 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class Lock_Level : MonoBehaviour
 {
     public Data_User_Login dtLogin;
@@ -35,6 +36,15 @@ public class Lock_Level : MonoBehaviour
                 levelButtons[i].interactable = false;
                 levelButtons[i].gameObject.SetActive(false);
             }
+        }
+    }
+    public void ClickLevel()
+    {
+        for (int i = 0; i < levelButtons.Length; i++)
+        {
+            //UnityEngine.SceneManagement.SceneManager.LoadScene(i);
+            int levelIndex = i; // Lưu chỉ số level để sử dụng trong sự kiện
+            levelButtons[i].onClick.AddListener(() => SceneManager.LoadScene(levelIndex + 1));
         }
     }
 }

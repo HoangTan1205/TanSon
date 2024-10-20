@@ -8,6 +8,7 @@ using System.Linq;
 using TMPro;
 using System.Data;
 using UnityEditor;
+using UnityEngine.SceneManagement;
 using static Scr_TableOject;
 public class ButtonMenu : MonoBehaviour
 {
@@ -17,13 +18,23 @@ public class ButtonMenu : MonoBehaviour
     [SerializeField] private TextMeshProUGUI messageText;
     [SerializeField] private Scr_TableOject data;
     [SerializeField] private Data_User_Login Data_User_Login;
-
     [SerializeField] private TextMeshProUGUI hienTTUserName;
     [SerializeField] private TextMeshProUGUI hienTTDiemCao;
-
     [SerializeField] private GameObject Menu;
     [SerializeField] private GameObject Login;
 
+    private void Awake()
+    {
+        if (Data_User_Login.idUser != 0)
+        {
+            SetActiveMenu();
+            addTT();
+        }
+        else
+        {
+            SetPanelLogin();
+        }
+    }
     public void DangNhap()
     {
         string username = usernameField.text;
@@ -64,7 +75,11 @@ public class ButtonMenu : MonoBehaviour
         int tim = data.List_User.Max(tt => tt.Id);
         return tim + 1;
     }
-
+    private void addTT()
+    {
+        hienTTUserName.text = "User: " + Data_User_Login.userName;
+        hienTTDiemCao.text = "High Score: " + Data_User_Login.diemCao.ToString();
+    }
     public void DangKy()
     {
         if (string.IsNullOrEmpty(usernameField.text))
@@ -102,6 +117,12 @@ public class ButtonMenu : MonoBehaviour
             
         }
     }
+    public void Play()
+    {
+        int level = Data_User_Login.levelUser;
+        SceneManager.LoadScene(level);
+
+    }
 
     private bool KiemTraUserName(string usernameToCheck)
     {
@@ -122,7 +143,11 @@ public class ButtonMenu : MonoBehaviour
         Login.gameObject.SetActive(false);
         Menu.gameObject.SetActive(true);
     }
-
+    private void SetPanelLogin()
+    {
+        Login.gameObject.SetActive(true);
+        Menu.gameObject.SetActive(false);
+    }
     private void ClearInput()
     {
         usernameField.text = "";

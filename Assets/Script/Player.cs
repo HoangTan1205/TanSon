@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     [SerializeField] private bool isGrounded;
     [SerializeField] private Vector2 movement;
     [SerializeField] Animator ani;
-
+    [SerializeField] private GameObject panel;
     AudioManager audioManager;
 
     private void Awake()
@@ -84,10 +84,10 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("VucMap"))
         {
             // audioManager.PlaySFX(audioManager.gameOver);
+            StartCoroutine(HienPanel());
             moveSpeed = 0f;
             ani.SetTrigger("Die");
-            Destroy(gameObject, 0.5f);
-            
+            Destroy(gameObject, 0.7f);
         }
     }
 
@@ -98,5 +98,10 @@ public class Player : MonoBehaviour
         {
             isGrounded = false;
         }
+    }
+    IEnumerator HienPanel()
+    {
+        yield return new WaitForSeconds(0.5f);
+        panel.SetActive(true);
     }
 }

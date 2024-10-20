@@ -8,6 +8,7 @@ public class Door : MonoBehaviour
 {
     [SerializeField] private Animator ani;
     [SerializeField] private bool win;
+    [SerializeField] private GameObject panelWin;
     void Start()
     {
         
@@ -37,8 +38,9 @@ public class Door : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             win = true;
-            Destroy(collision.gameObject, 1f);
-            StartCoroutine(ChuyenMan());
+            Destroy(collision.gameObject, 0.7f);
+            StartCoroutine(HienPanel());
+            //StartCoroutine(ChuyenMan());
         }
     }
     private void OnCollisionExit2D(Collision2D collision)
@@ -47,6 +49,11 @@ public class Door : MonoBehaviour
         {
             win = false;
         }
+    }
+    IEnumerator HienPanel()
+    {
+        yield return new WaitForSeconds(1f);
+        panelWin.SetActive(true);
     }
 
 }
