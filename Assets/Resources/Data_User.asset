@@ -12,4 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2832e3523c5f224ca8dd9949b06b46d, type: 3}
   m_Name: Data_User
   m_EditorClassIdentifier: 
-  List_User: []
+  List_User:
+  - Id: 1
+    UserName: hvtan
+    Pass: htan123
+    Level: 2
+    AmThanh: 1
+    DiemCao: 20
+  - Id: 2
+    UserName: tvson
+    Pass: tvson123
+    Level: 1
+    AmThanh: 1
+    DiemCao: 30
+  - Id: 3
+    UserName: tanson
+    Pass: tanson123
+    Level: 3
+    AmThanh: 0
+    DiemCao: 50

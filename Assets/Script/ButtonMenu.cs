@@ -23,6 +23,7 @@ public class ButtonMenu : MonoBehaviour
     [SerializeField] private GameObject Menu;
     [SerializeField] private GameObject Login;
 
+    
     private void Awake()
     {
         if (Data_User_Login.idUser != 0)
@@ -35,6 +36,11 @@ public class ButtonMenu : MonoBehaviour
             SetPanelLogin();
         }
     }
+    private void Start()
+    {
+        
+    }
+    
     public void DangNhap()
     {
         string username = usernameField.text;
