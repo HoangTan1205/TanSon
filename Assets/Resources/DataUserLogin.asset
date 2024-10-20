@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b548a568bac4394cbd725f54c7e4b5c, type: 3}
   m_Name: DataUserLogin
   m_EditorClassIdentifier: 
-  idUser: 0
-  userName: 
-  passwordUser: 
-  levelUser: 0
+  idUser: 4
+  userName: tannn
+  passwordUser: tannn123
+  levelUser: 4
   sound: 0
   diemCao: 0
